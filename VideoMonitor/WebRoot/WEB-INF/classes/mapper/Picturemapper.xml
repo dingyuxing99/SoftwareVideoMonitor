@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.Picturemapper">
+	<!-- 增 -->
+	<insert id="Insert" parameterType="POJO.Picture">
+		insert into picture 
+		values(#{imgID},#{imgName},#{imgRes},#{imgSktUrl},#{imgUrl},
+		#{imgType},#{createTime},#{mptID},#{staffID})
+	</insert>
+	
+	<!-- 删 -->
+	<delete id="Delete" parameterType="Integer">
+		delete from picture where imgID = #{imgID}
+	</delete>
+	
+	<!-- 改 -->
+	<update id="Update" parameterType="POJO.Picture">
+		update picture set
+		imgName = #{imgName}, imgRes = #{imgRes}, imgSktUrl = #{imgSktUrl}, imgUrl = #{imgUrl},
+		imgType = #{imgType}, createTime = #{createTime}, mptID = #{mptID}, staffID = #{staffID}
+		where imgID = #{imgID}
+	</update>
+	
+	<!-- 查找 -->
+	<select id="Select" parameterType="POJO.Picture" resultType="POJO.Picture">
+		select * from picture where imgID = #{imgID}
+	</select>
+	
+	<!-- 显示 -->
+	<select id="All"  resultType="POJO.Picture">
+		select * from picture
+	</select>
+</mapper>
+

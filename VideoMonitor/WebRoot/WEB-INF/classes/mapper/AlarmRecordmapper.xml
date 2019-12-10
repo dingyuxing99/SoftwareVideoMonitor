@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.AlarmRecordmapper">
+	<!-- 增 -->
+	<insert id="Insert" parameterType="POJO.AlarmRecord">
+		insert into alarm_record 
+		values(#{almTime},#{optLocX},#{optLocY},#{isHandled},#{mptID},
+		#{rotAngle},#{staffID})
+	</insert>
+	
+	<!-- 删 -->
+	<delete id="Delete" parameterType="Integer">
+		delete from alarm_record where almRecID = #{almRecID}
+	</delete>
+	
+	<!-- 改 -->
+	<update id="Update" parameterType="POJO.AlarmRecord">
+		update alarm_record set
+		almTime = #{almTime}, optLocX = #{optLocX}, optLocY = #{optLocY}, isHandled = #{isHandled},
+		mptID = #{mptID}, rotAngle = #{rotAngle}, staffID = #{staffID}
+		where almRecID = #{almRecID}
+	</update>
+	
+	<!-- 查找 -->
+	<select id="Select" parameterType="POJO.AlarmRecord" resultType="POJO.AlarmRecord">
+		select * from alarm_record where almRecID = #{almRecID}
+	</select>
+	
+	<!-- 显示 -->
+	<select id="All"  resultType="POJO.AlarmRecord">
+		select * from alarm_record
+	</select>
+</mapper>
+

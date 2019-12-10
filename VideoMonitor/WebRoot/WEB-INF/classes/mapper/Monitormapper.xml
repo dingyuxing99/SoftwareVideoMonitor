@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.Monitormapper">
+	<!-- 增 -->
+	<insert id="Insert" parameterType="POJO.Monitor">
+		insert into monitor 
+		values(#{mptID},#{mptName},#{mptIP},#{height},#{poiID})
+	</insert>
+	
+	<!-- 删 -->
+	<delete id="Delete" parameterType="Integer">
+		delete from monitor where mptID = #{mptID}
+	</delete>
+	
+	<!-- 改 -->
+	<update id="Update" parameterType="POJO.Monitor">
+		update monitor set
+		mptName = #{mptName}, mptIP = #{mptIP}, height = #{height}, poiID = #{poiID}
+		where mptID = #{mptID}
+	</update>
+	
+	<!-- 查找 -->
+	<select id="Select" parameterType="POJO.Monitor" resultType="POJO.Monitor">
+		select * from monitor where mptID = #{mptID}
+	</select>
+	
+	<!-- 显示 -->
+	<select id="All"  resultType="POJO.Monitor">
+		select * from monitor
+	</select>
+</mapper>
+

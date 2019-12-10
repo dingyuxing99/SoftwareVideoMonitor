@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.Poimapper">
+	<!-- 增 -->
+	<insert id="Insert" parameterType="POJO.Poi">
+		insert into poi
+		values(#{poiID},#{poiPixX},#{poiPixY},#{poiType},#{rotID})
+	</insert>
+	
+	<!-- 删 -->
+	<delete id="Delete" parameterType="Integer">
+		delete from poi where poiID = #{poiID}
+	</delete>
+	
+	<!-- 改 -->
+	<update id="Update" parameterType="POJO.Poi">
+		update poi set
+		poiPixX = #{poiPixX}, poiPixY = #{poiPixY}, poiType = #{poiType}, rotID = #{rotID}
+		where poiID = #{poiID}
+	</update>
+	
+	<!-- 查找 -->
+	<select id="Select" parameterType="POJO.Poi" resultType="POJO.Poi">
+		select * from poi where poiID = #{poiID}
+	</select>
+	
+	<!-- 显示 -->
+	<select id="All"  resultType="POJO.Poi">
+		select * from poi
+	</select>
+</mapper>
+

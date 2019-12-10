@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.Videomapper">
+	<!-- 增 -->
+	<insert id="Insert" parameterType="POJO.Video">
+		insert into video
+		values(#{vidID},#{vidName},#{vidStartTime},#{vidUrl},#{vidSkchImgUrl},
+		#{vidType},#{mptID},#{staffID})
+	</insert>
+	
+	<!-- 删 -->
+	<delete id="Delete" parameterType="Integer">
+		delete from video where vidID = #{vidID}
+	</delete>
+	
+	<!-- 改 -->
+	<update id="Update" parameterType="POJO.Video">
+		update video set
+		vidName = #{vidName}, vidStartTime = #{vidStartTime}, vidUrl = #{vidUrl}, vidSkchImgUrl = #{vidSkchImgUrl},
+		vidType = #{vidType}, mptID = #{mptID}, staffID = #{staffID}
+		where vidID = #{vidID}
+	</update>
+	
+	<!-- 查找 -->
+	<select id="Select" parameterType="POJO.Video" resultType="POJO.Video">
+		select * from video where vidID = #{vidID}
+	</select>
+	
+	<!-- 显示 -->
+	<select id="All"  resultType="POJO.Video">
+		select * from video
+	</select>
+</mapper>
+
